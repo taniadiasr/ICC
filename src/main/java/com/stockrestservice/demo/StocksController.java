@@ -16,10 +16,10 @@ public class StocksController {
     private StocksRepository stockRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewStock (@RequestParam String name) {
+    public @ResponseBody String addNewStock (@RequestParam String content) {
 
         Stocks n = new Stocks();
-        n.setContent(name);
+        n.setContent(content);
         stockRepository.save(n);
         return "Saved";
     }
