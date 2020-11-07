@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.List;
 
+//TODO: Refactor 'Stocks' to singular here
+//TODO: Refactor at DB-Level
+
 @Entity
 public class Stocks {
     @Id
@@ -23,7 +26,9 @@ public class Stocks {
     public String getName() {
         return name;
     }
-    //TODO: add unique property to DB column and replicate in the API
+    //TODO: add unique property to DB column "name"
+    //TODO: and replicate in the API
+
     public void setName(String name) {
         this.name = name;
     }
@@ -32,6 +37,9 @@ public class Stocks {
     }
     public void setQuotes(String quotes) {
         this.quotes = quotes;
+    }
+    public void appendQuote(String quotes) {
+        this.quotes += quotes;
     }
 
 }

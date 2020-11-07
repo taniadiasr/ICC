@@ -6,11 +6,11 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
 
  # CRUD FEATURE STATUS
  
- Add: Working
+ Add: Working (POST)
  
- GetAll: Working
+ GetAll: Working (GET)
  
- Update: 
+ Update: (PATCH : for partial modifications :))
  
  Delete: 
 

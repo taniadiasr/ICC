@@ -5,6 +5,19 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
 ### STS ###
 .apt_generated
 .classpath
@@ -35,3 +48,11 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
