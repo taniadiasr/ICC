@@ -43,8 +43,6 @@ public class StocksController {
             .orElse(ResponseEntity.notFound().build());
     }
 
-
-
     @PostMapping(path="/patch")
     public @ResponseBody
     ResponseEntity<Stocks> addNewQuote(@PathVariable Integer id, @RequestParam String toBeAdded) {

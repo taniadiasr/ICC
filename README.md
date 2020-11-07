@@ -12,7 +12,10 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
  (  http://localhost:8080/demo/stock 
     http://localhost:8080/demo/stock/4)
 
- Update: (PATCH : for partial modifications :))
+ Update: 
+    /* PATCH : using CrudRepository , from Spring Data, found a drawback, 
+    as it performs full update - aka all columns. */
+  )
  
  Delete: 
 
@@ -32,7 +35,7 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
 * There is also docker deploy option on stack.yml.
 
 
-# WALK THROUGH (Theory for my own consult) 
+# WALK THROUGH (Theory and project decision-making) 
 
 ====> WAS ?! * What is SpringBoot? !
 
@@ -62,24 +65,25 @@ project to test. If successful, is ready to code.
 - Spring WEB is enough but not for connection to  MySQL!
 - Spring Data: It simplifies data access from the relational and NoSQL databases.
 - Lombok: boilerplate friend
+- https://www.baeldung.com/spring-data-partial-update << ! 
 
 ====> Coding steps to getUp And Running! (No DB Attached)
 
--> Create a Resource Representation Class
+- Create a Resource Representation Class
 
--> Create a Resource Controller for the previous
+- Create a Resource Controller for the previous
 
--> Build an executable JAR 
+- Build an executable JAR 
 
 	> gradlew bootRun
 
--> Run RestServiceApplication.java
+- Run DemoApplication.java (for now, makes sense to use a Service here !)
 
 ====> Coding steps to getUp And Running! (DB Attached)
 
--> Entity
+- Entity for Stocks 
 
--> Repository
+- Repository
 
 -> Controller
 
