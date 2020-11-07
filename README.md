@@ -25,7 +25,7 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
 
 3. Open Postman > import > Link > https://www.postman.com/collections/ab92c4f397f9465e325d
 
-4. Trigger the requests that might interest you. Remember: you need to create the table and populate ! 
+4. Trigger the requests that might interest you. Remember: you need to create the DB and populate! 
 
 * For that, I made available a DB dump for you with data. Its under Dump folder. 
 
