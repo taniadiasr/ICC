@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping(path="/demo")
 public class StocksController {
@@ -20,8 +18,8 @@ public class StocksController {
     @Autowired
     private StocksRepository stockRepository;
 
-    @PostMapping(path="/add")
-    public @ResponseBody String addNewStock (@RequestParam String name, @RequestParam String quotes) {
+    @PostMapping(path="/stock")
+    public @ResponseBody String addNewStock(@RequestParam String name, @RequestParam String quotes) {
 
         Stocks n = new Stocks();
         n.setName(name);
@@ -30,25 +28,29 @@ public class StocksController {
         return "Saved";
     }
 
-    @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Integer id) {
+    @GetMapping(path="/stock")
+    public @ResponseBody Iterable<Stocks> getAllStocks() {
+
+        return stockRepository.findAll();
+    }
+
+    @GetMapping(path="/stock/{id}")
+    public @ResponseBody
+    ResponseEntity<Stocks> findById(@PathVariable Integer id) {
 
         return stockRepository.findById(id)
             .map(record -> ResponseEntity.ok().body(record))
             .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping(path="/all")
-    public @ResponseBody Iterable<Stocks> getAllStocks() {
 
-        return stockRepository.findAll();
+
+    @PostMapping(path="/patch")
+    public @ResponseBody
+    ResponseEntity<Stocks> addNewQuote(@PathVariable Integer id, @RequestParam String toBeAdded) {
+
+        return stockRepository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
-
-    /*@PostMapping(path="/patch")
-    public @ResponseBody String addNewQuote(@RequestParam Integer id, @RequestParam String toBeAdded) {
-        Stocks n = new Stocks();
-        stockRepository.findById(id);
-
-        return "Updated";
-    }*/
 }
