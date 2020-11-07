@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(path="/demo")
 public class StocksController {
@@ -16,10 +18,11 @@ public class StocksController {
     private StocksRepository stockRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewStock (@RequestParam String content) {
+    public @ResponseBody String addNewStock (@RequestParam String name, @RequestParam String quotes) {
 
         Stocks n = new Stocks();
-        n.setContent(content);
+        n.setName(name);
+        n.setQuotes(quotes);
         stockRepository.save(n);
         return "Saved";
     }
