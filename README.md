@@ -17,11 +17,11 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
  Delete: 
 
 
-# HOW TO GET 
+# HOW TO 
 
 1. Git clone this repo;
-
-2. Run the build.gradle;
+  
+2. Import the project using the build.gradle as config file;
 
 3. Open Postman > import > Link > https://www.postman.com/collections/ab92c4f397f9465e325d
 
