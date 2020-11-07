@@ -185,8 +185,6 @@ QL Community Server - GPL.
 
 -> Browser + http://localhost:8080 -> You shall see the mysql db set there !
 
--> Maybe we can now connect through navicat as well.
-
 -> drop reason: inner docker network configuration was too time expensive for this precise moment,
 however, the deploy using the stack.yml file configured above works great;
 
