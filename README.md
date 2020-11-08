@@ -52,17 +52,10 @@ project to test. If successful, is ready to code.
 - Lombok: boilerplate friend
 - https://www.baeldung.com/spring-data-partial-update << ! 
 
-====> Coding steps to getUp And Running! (No DB Attached)
-
-- Create a Resource Representation Class
-
-- Create a Resource Controller for the previous
-
 - Build an executable JAR 
-
 	> gradlew bootRun
 
-- Run DemoApplication.java (for now, makes sense to use a Service here !)
+- Run DemoApplication.java
 
 ====> Coding steps to getUp And Running! (DB Attached)
 
@@ -72,12 +65,12 @@ project to test. If successful, is ready to code.
 
 -> Controller
 
--> Don't forget to set the Mapping accordingly.
+-> Don't forget to set the Mapping accordingly. run the project as per usage of one among two options below: 
 
     > gradlew bootRun
     > mvnw spring-boot:run 
    
-====> SPICING UP: Adding MySQL // With Docker Server
+====> SPICING UP: Adding MySQL // With Docker Server (deprecated. Now the application creates the table etc due to changes made and adoption of a MVC pattern).
 	/* https://spring.io/guides/gs/accessing-data-mysql/ */
 	/* https://hub.docker.com/_/mysql/ */
 
