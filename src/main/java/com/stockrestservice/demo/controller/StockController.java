@@ -28,6 +28,7 @@ public class StockController {
 
     @Autowired
     StockRepository stockRepository;
+
     /*Get All Stocks! */
     @GetMapping("/stock")
     public ResponseEntity<List<Stock>> getAllStocks(@RequestParam(required = false) String name) {
@@ -48,6 +49,7 @@ public class StockController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     /*Get by Id !*/
     @GetMapping("/stock/{id}")
     public ResponseEntity<Stock> getStockById(@PathVariable("id") long id) {
@@ -72,5 +74,56 @@ public class StockController {
         }
     }
 
+    /*Update Stock Quotes*/
+    //TODO: append instead of replacement of Quotes;
+    @PutMapping("/stock/{id}")
+    public ResponseEntity<Stock> updateStock(@PathVariable("id") long id, @RequestBody Stock stock) {
+        Optional<Stock> stockData = stockRepository.findById(id);
 
+        if (stockData.isPresent()) {
+            Stock _stock = stockData.get();
+            _stock.setName(stock.getName());
+            _stock.setQuotes(stock.getQuotes());
+            return new ResponseEntity<>(stockRepository.save(_stock), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /*Delete Stock*/
+    @DeleteMapping("/stock/{id}")
+    public ResponseEntity<HttpStatus> deleteStock(@PathVariable("id") long id) {
+        try {
+            stockRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /*Delete All Stock*/
+    @DeleteMapping("/stock")
+    public ResponseEntity<HttpStatus> deleteAllStocks() {
+        try {
+            stockRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /*Find a Stock Quote list by its name*/
+    @GetMapping("/stock/{name}")
+    public ResponseEntity<List<Stock>> findByName(String name) {
+        try {
+            List<Stock> stocks = stockRepository.findByName(name);
+
+            if (stocks.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(stocks, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

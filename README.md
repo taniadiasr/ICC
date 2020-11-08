@@ -6,18 +6,13 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
 
  # CRUD FEATURE STATUS
  
- Add: Working (POST)
+ Create: Working (POST)
  
- GetAll: Working (GET) 
-  - http://localhost:8080/demo/stock
-  - http://localhost:8080/demo/stock/4
+ Read: Working (GET) 
 
- Update: 
-    /* PATCH : using CrudRepository , from Spring Data, found a drawback, 
-    as it performs full update - aka all columns. */
-  )
+ Update: Working (PUT)
  
- Delete: 
+ Delete: Working (check permissions)
 
 
 # HOW TO 
@@ -28,12 +23,9 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
 
 3. Open Postman > import > Link > https://www.postman.com/collections/ab92c4f397f9465e325d
 
-4. Trigger the requests that might interest you. Remember: you need to create the DB and populate! 
+4. Trigger the requests that might interest you. 
 
-* For that, I made available a DB dump for you with data. Its under Dump folder. 
-
-* There is also docker deploy option on stack.yml.
-
+![alt text](https://github.com/taniadiasr/ICC/images/pic.png)
 
 # WALK THROUGH (Theory and project decision-making) 
 
