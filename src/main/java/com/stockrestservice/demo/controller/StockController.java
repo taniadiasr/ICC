@@ -59,7 +59,6 @@ public class StockController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
     /*Create Stock*/
     @PostMapping("/stock")
     public ResponseEntity<Stock> createStock(@RequestBody Stock stock) {
