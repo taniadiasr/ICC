@@ -9,13 +9,8 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
  Add: Working (POST)
  
  GetAll: Working (GET) 
-  - http://localhost:8080/demo/stock
-  - http://localhost:8080/demo/stock/4
 
- Update: 
-    /* PATCH : using CrudRepository , from Spring Data, found a drawback, 
-    as it performs full update - aka all columns. */
-  )
+ Update: Working (PUT, so far)
  
  Delete: 
 
