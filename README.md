@@ -1,12 +1,12 @@
 #:: Spring Boot :: Stock Quotes for ICC (v0.1.0.RELEASE)
 
+## Project Structure Overview
+
+![alt text](https://github.com/taniadiasr/ICC/blob/JPA_feature/images/project.png)
+
+## Postman  
 Postman collection for testing:
-
 https://www.getpostman.com/collections/ab92c4f397f9465e325d
-
-# What you will deploy 
-
-![alt text](https://github.com/taniadiasr/ICC/blob/master/images/project.png)
 
 
 # HOW TO 
