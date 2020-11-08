@@ -1,22 +1,15 @@
-#ICC STOCK CRUD 
+#:: Spring Boot :: Stock Quotes for ICC (v0.1.0.RELEASE)
 
 Postman collection for testing:
 
 https://www.getpostman.com/collections/ab92c4f397f9465e325d
 
- # CRUD FEATURE STATUS
- 
- Create: Working (POST)
- 
- Read: Working (GET) 
+# What you will deploy 
 
- Update: Working (PUT)
- 
- Delete: Working (check permissions)
+![alt text](https://github.com/taniadiasr/ICC/blob/master/images/project.png)
 
 
 # HOW TO 
-
 1. Git clone this repo;
   
 2. Import the project using the build.gradle as config file;
