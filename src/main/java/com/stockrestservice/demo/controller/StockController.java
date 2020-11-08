@@ -28,6 +28,7 @@ public class StockController {
 
     @Autowired
     StockRepository stockRepository;
+
     /*Get All Stocks! */
     @GetMapping("/stock")
     public ResponseEntity<List<Stock>> getAllStocks(@RequestParam(required = false) String name) {
@@ -48,6 +49,7 @@ public class StockController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     /*Get by Id !*/
     @GetMapping("/stock/{id}")
     public ResponseEntity<Stock> getStockById(@PathVariable("id") long id) {
@@ -59,6 +61,7 @@ public class StockController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     /*Create Stock*/
     @PostMapping("/stock")
     public ResponseEntity<Stock> createStock(@RequestBody Stock stock) {
@@ -70,10 +73,11 @@ public class StockController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     /*Update Stock Quotes*/
     //TODO: append instead of replacement of Quotes;
     @PutMapping("/stock/{id}")
-    public ResponseEntity<Stock> updateTutorial(@PathVariable("id") long id, @RequestBody Stock stock) {
+    public ResponseEntity<Stock> updateStock(@PathVariable("id") long id, @RequestBody Stock stock) {
         Optional<Stock> stockData = stockRepository.findById(id);
 
         if (stockData.isPresent()) {
@@ -85,5 +89,28 @@ public class StockController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    /*Delete Stock*/
+    @DeleteMapping("/stock/{id}")
+    public ResponseEntity<HttpStatus> deleteStock(@PathVariable("id") long id) {
+        try {
+            stockRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /*Delete All Stock*/
+    @DeleteMapping("/stock")
+    public ResponseEntity<HttpStatus> deleteAllStocks() {
+        try {
+            stockRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 }
