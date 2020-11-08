@@ -25,6 +25,7 @@ https://www.getpostman.com/collections/ab92c4f397f9465e325d
 
 4. Trigger the requests that might interest you. 
 
+![alt text](https://github.com/taniadiasr/ICC/images/pic.png)
 
 # WALK THROUGH (Theory and project decision-making) 
 
