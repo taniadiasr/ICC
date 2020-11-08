@@ -112,5 +112,18 @@ public class StockController {
         }
     }
 
+    /*Find a Stock Quote list by its name*/
+    @GetMapping("/stock/{name}")
+    public ResponseEntity<List<Stock>> findByName(String name) {
+        try {
+            List<Stock> stocks = stockRepository.findByName(name);
 
+            if (stocks.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(stocks, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
