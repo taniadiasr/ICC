@@ -70,6 +70,20 @@ public class StockController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    /*Update Stock Quotes*/
+    //TODO: append instead of replacement of Quotes;
+    @PutMapping("/stock/{id}")
+    public ResponseEntity<Stock> updateTutorial(@PathVariable("id") long id, @RequestBody Stock stock) {
+        Optional<Stock> stockData = stockRepository.findById(id);
 
+        if (stockData.isPresent()) {
+            Stock _stock = stockData.get();
+            _stock.setName(stock.getName());
+            _stock.setQuotes(stock.getQuotes());
+            return new ResponseEntity<>(stockRepository.save(_stock), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
