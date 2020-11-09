@@ -44,6 +44,13 @@ public class Stock {
         this.quotes = quotes;
     }
 
+    public void appendQuotes(String quotes) {
+
+        if (this.quotes.isBlank()) {
+            this.quotes = "";
+        }
+        this.quotes += quotes;
+    }
     @Override
     public String toString() {
         return " Stock [id=" + id + ", name=" + name + ", quotes=" + quotes + "]";
