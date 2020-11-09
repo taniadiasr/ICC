@@ -65,13 +65,13 @@ public class StockController {
 
     /*Create Stock*/
     @PostMapping("/stock")
-    public ResponseEntity<Stock> createStock(@RequestBody Stock stock) {
+    public ResponseEntity<Object> createStock(@RequestBody Stock stock) {
         try {
             Stock _stock = stockRepository
                     .save(new Stock(stock.getName(), stock.getQuotes()));
-            return new ResponseEntity<>(_stock, HttpStatus.CREATED);
+            return new ResponseEntity<Object>(_stock, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.OK);
         }
     }
 
