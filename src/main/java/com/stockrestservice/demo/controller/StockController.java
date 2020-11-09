@@ -1,6 +1,7 @@
 package com.stockrestservice.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,7 +76,6 @@ public class StockController {
     }
 
     /*Update Stock Quotes*/
-    //TODO: append instead of replacement of Quotes;
     @PutMapping("/stock/{id}")
     public ResponseEntity<Stock> updateStock(@PathVariable("id") long id, @RequestBody Stock stock) {
         Optional<Stock> stockData = stockRepository.findById(id);
@@ -83,7 +83,24 @@ public class StockController {
         if (stockData.isPresent()) {
             Stock _stock = stockData.get();
             _stock.setName(stock.getName());
+            //TODO: updateProperly method does the append instead of override like this one
             _stock.setQuotes(stock.getQuotes());
+            return new ResponseEntity<>(stockRepository.save(_stock), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /*Update Stock Quotes*/
+    //TODO: append instead of replacement of Quotes;
+    @PutMapping("/stock/{name}")
+    public ResponseEntity<Stock> updateStockProperly(@PathVariable("name") String name, @RequestBody String quote) {
+        List<Stock> stockData = stockRepository.findByName(name);
+        Iterator it = stockData.iterator();
+
+        if (it.hasNext()) {
+            Stock _stock = (Stock) it.next();
+            _stock.appendQuotes(quote);
             return new ResponseEntity<>(stockRepository.save(_stock), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
